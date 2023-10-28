@@ -1,0 +1,39 @@
+<main>
+    <div class="container">
+        <h1>{{article.title}}</h1>
+        <div class="d-flex gap-4 justify-content-between ">
+        <div class="d-flex">
+            <p class="border-end pe-3 paraStyle">PUBLISHED ON <span class="timeStyle">{{article.date|date:'MMMM d, y'}}</span></p>
+            <span class="ps-3 main-color monter fw-bold">BY {{article.author}}</span>
+        </div>
+        <ul class="list-unstyled d-flex gap-2">
+            <li class="d-flex justify-content-center align-items-center"><i class="fab fab fa-facebook"></i></li>
+            <li class="d-flex justify-content-center align-items-center"><i class="fab fa-twitter"></i></li>
+            <li class="d-flex justify-content-center align-items-center"><i class="fab fa-whatsapp"></i></li>
+        </ul>
+        </div>
+<div class="row my-3">
+    <div class="col-md-9">
+        <app-loading *ngIf="loading"></app-loading>
+        <img [src]="article.img" class="w-100" alt="">
+        <p class="monter mt-3">{{article.content}}</p>
+        <a [href]="article.url" target="_blank" class="main-color monter font-s-17">View Full Article>></a>
+    </div>
+    <div class="col-md-3">
+        <img src="assets/advertismentPlaceholder.jpg" class="w-100 img-thumbnail" alt="">
+        <div class="row border gy-3 mt-4 pt-2 overflow-hidden">
+            <app-loading *ngIf="news.length==0"></app-loading>
+            <div>
+                <h2 class="band fw-bold bg-body-secondary text-center">Latest Articles</h2>
+            </div>
+            <div class="col-md-12 border-bottom" *ngFor="let news of news">
+                <span class="main-color monter">{{news?.source.name}}</span>
+                <h4 class="title monter fw-bold font-s-17" (click)="openArticle(news?.title,news?.description,news?.urlToImage,news?.publishedAt,news?.author,news?.url)">{{news?.title}}</h4>
+                <p class="monter font-s-13">{{news?.description}}</p>
+                <span class="font-s-13 monter">{{news?.publishedAt|date:'MMMM d,y'}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</main>

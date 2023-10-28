@@ -1,0 +1,15 @@
+main{
+    padding: 150px 0;
+    background-color: #ce0000;
+}
+.close:hover{
+    cursor: pointer;
+}
+.searchTitle{
+    transition: color .2s;
+    color: #fff;
+}
+.searchTitle:hover{
+    color: #000;
+    cursor:pointer;
+}

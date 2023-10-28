@@ -1,0 +1,154 @@
+<main>
+    <app-loading *ngIf="healthNews.length==0"></app-loading>
+    <div class="container">
+    <div class="row px-3">
+        <div class="col-md-8">
+            <h2 class="band p-2 display-6 text-white text-center w-50">Top Headlines</h2>
+            <div class="row border-end py-3 rounded border-bottom">
+                <div class="col-md-6">
+                    <h4 class="title" (click)="openArticle(firstNews?.title,firstNews?.description,firstNews?.urlToImage,firstNews?.publishedAt,firstNews?.author,firstNews?.url)">{{firstNews?.title}}</h4>
+                    <span class="main-color fw-semibold">{{firstNews?.source.name}}</span>
+                    <p>{{firstNews?.description?.split(' ').slice(0,31).join(' ')}}</p>
+                </div>
+                <div class="col-6">
+                <img [src]="firstNews?.urlToImage" class="w-100" alt="Top">
+            </div>
+            </div>
+            <div class="row border-bottom">
+                <div class="col-md-6 d-flex flex-column justify-content-center border-end overflow-hidden ">
+                    <div class="my-auto">
+                    <h3 class="title" (click)="openArticle(secondNews?.title,secondNews?.description,secondNews?.urlToImage,secondNews?.publishedAt,secondNews?.author,secondNews?.url)">{{secondNews?.title}}</h3>
+                    <span class="main-color fw-semibold ">{{secondNews?.source.name}}</span>
+                    <p>{{secondNews?.description}}</p>
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <h3 class="title" (click)="openArticle(thirdNews?.title,thirdNews?.description,thirdNews?.urlToImage,thirdNews?.publishedAt,thirdNews?.author,thirdNews?.url)">{{thirdNews?.title}}</h3>
+                        <span class="main-color fw-semibold ">{{thirdNews?.source.name}}</span>
+                        <p>{{thirdNews?.description}}</p>
+                    </div>
+                    <div class="row border-top overflow-hidden ">
+                        <h3 class="title" (click)="openArticle(fourthNews?.title,fourthNews?.description,fourthNews?.urlToImage,fourthNews?.publishedAt,fourthNews?.author,fourthNews?.url)">{{fourthNews?.title}}</h3>
+                        <span class="main-color fw-semibold">{{fourthNews?.source.name}}</span>
+                        <p>{{fourthNews?.content?.split('[+4253 chars]').join(' ')}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3 border-bottom">
+                <div class="p-2 text-white">
+                    <h2 class="display-4 band w-25 text-center">Health</h2>
+                </div>
+                <div class="col-md-6 my-3" *ngFor="let health of healthNews">
+                    <div class="d-flex justify-content-center align-items-start flex-column ">
+                    <img [src]="health.urlToImage" class="w-100" alt="">
+                    <h5 class="title" (click)="openArticle(health?.title,health?.description,health?.urlToImage,health?.publishedAt,health?.author,health?.url)">{{health.title.split('[Removed]').join(' ')}}</h5>
+                    <span class="main-color fw-semibold">{{health.source.name}}</span>
+                    <p>{{health.description?.split('[Removed]').join(' ')}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 text-white">
+                <h2 class="display-4 band w-50 text-center">Entertainment</h2>
+            </div>
+            <div class="row mt-3" *ngFor="let entertainment of entertainmentNews">
+                <div class="col-md-4">
+                    <img [src]="entertainment.urlToImage" class="w-100" alt="">
+                </div>
+                <div class="col-md-8">
+                    <h5 class="title" (click)="openArticle(entertainment?.title,entertainment?.description,entertainment?.urlToImage,entertainment?.publishedAt,entertainment?.author,entertainment?.url)">{{entertainment.title.split('[Removed]').join(' ')}}</h5>
+                    <span class="main-color fw-semibold">{{entertainment.source.name.split('[Removed]').join(' ')}}</span>
+                    <p>{{entertainment.description?.split('[Removed]').join(' ')}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 border-start rounded">
+            <h2 class="band text-white text-center w-50 p-2 display-6 ">Business</h2>
+            <div class="row border-bottom rounded py-2" *ngFor="let news of businessNews">
+                <img [src]="news.urlToImage" class="w-100" alt="news">
+                <h3 class="title" (click)="openArticle(news?.title,news?.description,news?.urlToImage,news?.publishedAt,news?.author,news?.url)">{{news.title}}</h3>
+                <span class="main-color fw-semibold">{{news.source.name}}</span>
+                <p class="overflow-hidden">{{news.description}}</p>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="my-3 bg-body-secondary w-100 d-flex justify-content-center py-4 px-4">
+        <img src="assets/rec1.jpg" class="w-75 " alt="">
+    </div>
+    <div class="container mx-auto">
+        <div class="my-3">
+            <h2 class="p-2 text-center w-25 mx-auto text-white band display-6">Band of The Month</h2>
+        </div>
+    <div class="row bg-dark">
+        <div class="col-md-8 bg-body-secondary firstVideoStyling">
+            <div id="video" class="d-flex justify-content-center align-items-center p-3">
+                
+            </div>
+            <h3 class="text-dark name ms-2 mt-2">{{firstVideo?.name}}</h3>
+            <p class="text-dark desc">{{firstVideo?.description}}</p>
+        </div>
+        <div class="col-md-4 bg-body-tertiary otherVideosStyling overflow-auto">
+            <div class="d-flex gap-2 align-items-center p-2 rounded-2 nowPlay monter">
+            <div class="border-end">
+                <i class="far fa-play-circle fs-4 text-white me-2"></i>
+            </div>
+            <div class="text-white fs-6" id="playing">
+                <p class="text-white" >{{firstVideo?.name}}</p>
+                </div>
+            </div>
+            <div class="row my-2 koi rounded" *ngFor="let video of videos">
+              
+                <div class="col-md-6 ">
+            <img [src]="video?.thumbnailUrl" class="w-100 mo" (click)="click(video.embedHtml,video.name,video.description)" alt="">
+        </div>
+        <div class="col-md-6">
+            <p (click)="click(video.embedHtml,video.name,video.description)">{{video?.name}}</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="p-2 text-white my-3">
+        <h2 class="display-4 band w-25 text-center">Celeb</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6 border-end">
+            <img [src]="celebNews[0]?.urlToImage" class="w-100" alt="celebNews">
+            <h4 class="title" (click)="openArticle(celebNews[0]?.title,celebNews[0]?.description,celebNews[0]?.urlToImage,celebNews[0]?.publishedAt,celebNews[0]?.author,celebNews[0]?.url)">{{celebNews[0]?.title}}</h4>
+            <span class="main-color fw-semibold">{{celebNews[0]?.source.name}}</span>
+            <p class="overflow-hidden ">{{celebNews[0]?.description}}</p>
+            <div class="row border-top pt-3">
+                <div class="col-md-6 border-end">
+                    <img [src]="celebNews[1]?.urlToImage" class="w-100" alt="celebNews">
+                    <h4 class="title" (click)="openArticle(celebNews[1]?.title,celebNews[1]?.description,celebNews[1]?.urlToImage,celebNews[1]?.publishedAt,celebNews[1]?.author,celebNews[1]?.url)">{{celebNews[1]?.title}}</h4>
+                    <span class="main-color fw-semibold">{{celebNews[1]?.source.name}}</span>
+                    <p class="overflow-hidden ">{{celebNews[1]?.description}}</p>
+                </div>
+                <div class="col-md-6">
+                    <img [src]="celebNews[2]?.urlToImage" class="w-100" alt="celebNews">
+                    <h4 class="title" (click)="openArticle(celebNews[2]?.title,celebNews[2]?.description,celebNews[2]?.urlToImage,celebNews[2]?.publishedAt,celebNews[2]?.author,celebNews[2]?.url)">{{celebNews[2]?.title}}</h4> 
+                    <span class="main-color fw-semibold">{{celebNews[2]?.source.name}}</span>
+                    <p class="overflow-hidden ">{{celebNews[2]?.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img [src]="celebNews[3]?.urlToImage" class="w-100" alt="celebNews">
+            <h4 class="title" (click)="openArticle(celebNews[3]?.title,celebNews[3]?.description,celebNews[3]?.urlToImage,celebNews[3]?.publishedAt,celebNews[3]?.author,celebNews[3]?.url)">{{celebNews[3]?.title}}</h4>
+            <span class="main-color fw-semibold">{{celebNews[3]?.source.name}}</span>
+            <p class="overflow-hidden ">{{celebNews[3]?.description}}</p>
+            <div class="row pt-3 border-top">
+                <div class="col-md-6">
+                    <h4 class="title" (click)="openArticle(celebNews[4]?.title,celebNews[4]?.description,celebNews[4]?.urlToImage,celebNews[4]?.publishedAt,celebNews[4]?.author,celebNews[4]?.url)">{{celebNews[4]?.title}}</h4>
+                    <span class="main-color fw-semibold">{{celebNews[4]?.source.name}}</span>
+                    <p class="overflow-hidden">{{celebNews[4]?.description}}</p>
+                </div>
+                <div class="col-md-6">
+                    <img [src]="celebNews[4]?.urlToImage" class="w-100" alt="celebNews">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>

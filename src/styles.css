@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&display=swap');
+iframe{
+    height: 540px !important;
+}
+.title{
+    transition: color .2s;
+}
+.title:hover{
+    color: #ce0000;
+    cursor:pointer;
+}
+.band{
+    transform: skew(-10deg);
+}
+.main-color{
+    color: #ce0000;
+}
+.font-s-13{
+    font-size: 13px;
+}
+.font-s-17{
+    font-size: 17px;
+}
+.monter{
+    font-family: 'Montserrat', sans-serif;
+}

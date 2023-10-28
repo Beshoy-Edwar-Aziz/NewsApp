@@ -1,0 +1,54 @@
+<main>
+    <div class="container">
+    <div class="row first-articles">
+        <div class="col-md-6 border-end">
+            <img [src]="entertainmentNews[0]?.urlToImage" class="w-100" alt="entertainmentNews">
+            <span class="font-s-13 main-color fw-bold">{{entertainmentNews[0]?.source.name}}</span>
+            <h2 class="title monter" (click)="openArticle(entertainmentNews[0]?.title,entertainmentNews[0]?.content,entertainmentNews[0]?.urlToImage,entertainmentNews[0]?.publishedAt,entertainmentNews[0]?.author,entertainmentNews[0]?.url)">{{entertainmentNews[0]?.title}}</h2>
+            <p class="monter font-s-13">{{entertainmentNews[0]?.description}}</p>
+            <span class="monter font-s-13">{{entertainmentNews[0]?.publishedAt|date:"MMMM d,y"}}</span>
+        </div>
+        <div class="col-md-6">
+            <img [src]="entertainmentNews[1]?.urlToImage" class="w-100" alt="entertainmentNews">
+            <span class="monter font-s-13 main-color fw-bold">{{entertainmentNews[1]?.source.name}}</span>
+            <h2 class="monter title" (click)="openArticle(entertainmentNews[1]?.title,entertainmentNews[1]?.content,entertainmentNews[1]?.urlToImage,entertainmentNews[1]?.publishedAt,entertainmentNews[1]?.author,entertainmentNews[1]?.url)">{{entertainmentNews[1]?.title}}</h2>
+            <p class="monter font-s-13">{{entertainmentNews[1]?.description}}</p>
+            <span class="monter font-s-13">{{entertainmentNews[1]?.publishedAt|date:"MMMM d,y"}}</span>
+        </div>
+    </div>
+    </div>
+    <div class="bg-body-secondary d-flex justify-content-center p-3 my-5">
+        <img src="./assets/rec1.jpg" class="w-75" alt="Advert">
+    </div>
+    <div class="container container d-flex flex-column align-items-center">
+        <div class="my-5">
+            <h3 class="monter band w-100 text-white fw-bold text-center p-1">KEEP EXPLORING</h3>
+        </div>
+        <div class="row rest-of-news">
+            <div class="col-md-8">
+                <div class="row gy-3">
+                    <div class="col-md-6" *ngFor="let entertainment of entertainmentNews">
+                        <img [src]="entertainment?.urlToImage" class="w-100" alt="entertainment">
+                        <span class="monter font-s-13 main-color fw-bold">{{entertainment?.source.name}}</span>
+                        <h2 class="monter title font-s-28" (click)="openArticle(entertainment?.title,entertainment?.content,entertainment?.urlToImage,entertainment?.publishedAt,entertainment?.author,entertainment?.url)">{{entertainment?.title}}</h2>
+                        <p class="monter font-s-13">{{entertainment?.description}}</p>
+                        <span class="monter font-s-13">{{entertainment?.publishedAt|date:'MMMM d,y'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 border overflow-hidden">
+                <div class="row">
+                    <div class="my-3">
+                        <h2 class="band monter fw-bold w-100 bg-secondary p-2 text-center">LATEST ARTICLES</h2>
+                    </div>
+                    <div class="col-md-12 border-bottom pb-3" *ngFor="let news of latestArticles">
+                        <span class="main-color monter">{{news?.source.name}}</span>
+                        <h4 class="title monter fw-bold font-s-17" (click)="openArticle(news?.title,news?.description,news?.urlToImage,news?.publishedAt,news?.author,news?.url)">{{news?.title}}</h4>
+                        <p class="monter font-s-13">{{news?.description}}</p>
+                        <span class="font-s-13 monter">{{news?.publishedAt|date:'MMMM d,y'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

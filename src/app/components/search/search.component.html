@@ -1,0 +1,25 @@
+<main class="d-flex align-items-start">
+    <div class="container">
+        <div class="d-flex  justify-content-end close" (click)="close()">
+        <i class="fas fa-window-close text-white fs-2"></i>
+        </div>
+    <div class="d-flex justify-content-center">
+        <h1 class="monter text-white fw-bold">Search For An Article</h1>
+    </div>
+    <div class="d-flex">
+       <button class="btn btn-outline-dark border-0" (click)="search()" type="submit"><i class="fas fa-search fs-3 me-2 mt-1 text-white"></i></button> <input (submit)="search()" type="search" [(ngModel)]="searchValue" class="form-control monter" placeholder="Search....">
+    </div>
+    <div class="container my-3">
+    <div class="row my-4" *ngFor="let result of searchResults">
+        <div class="col-md-4">
+            <img [src]="result?.urlToImage" class="w-100" alt="">
+        </div>
+        <div class="col-md-8">
+            <h2 class="searchTitle monter" (click)="openArticle(result?.title,result?.description,result?.urlToImage,result?.publishedAt,result?.author,result?.url)">{{result?.title}}</h2>
+            <p class="monter font-s-13">{{result?.description}}</p>
+            <span class="monter font-s-13">{{result?.publishedAt|date:'MMMM d,y'}}</span>
+        </div>
+    </div>
+</div>
+</div>
+</main>
