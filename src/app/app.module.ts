@@ -11,6 +11,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FinanceComponent } from './components/finance/finance.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EntertainmentComponent,
     ArticleComponent,
     LoadingComponent,
-    SearchComponent
+    SearchComponent,
+    FinanceComponent
   ],
   imports: [
     BrowserModule,

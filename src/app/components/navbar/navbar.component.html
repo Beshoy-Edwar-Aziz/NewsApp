@@ -4,6 +4,7 @@
             <li><i class="fab fa-facebook"></i></li>
             <li><i class="fab fa-twitter"></i></li>
             <li><i class="fab fa-tiktok"></i></li>
+            <li><i class="fas fa-sun" (click)="darkMode()"></i></li>
         </ul>
     </div>
     <h1 class="text-white display-2 ">Magic News</h1>
@@ -17,18 +18,58 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse position-relative" id="navbarNav">
         <ul class="navbar-nav mx-auto fs-2 pb-2">
           <li class="nav-item">
             <a class="nav-link active position-relative text-white othernav" routerLink="home" routerLinkActive="activeLink" aria-current="page">Home</a>
           </li>
           <li class="nav-item ms-2">
-            <a class="nav-link text-white othernav" routerLink="entertainment">Entertainment</a>
+            <a class="nav-link text-white othernav"  routerLink="entertainment" routerLinkActive="activeLink" (mouseenter)="showEntertainmentNav()" (mouseenter)="hideFinanceNav()">Entertainment</a>
           </li>
           <li class="nav-item ms-2">
-            <a class="nav-link text-white othernav">Finance</a>
+            <a class="nav-link text-white othernav financeNav" routerLink="finance" routerLinkActive="activeLink" (mouseenter)="showFinanceNav()" (mouseenter)="hideEntertainmentNav()">Finance</a>
           </li>
         </ul>
+        <div class="bg-dark position-absolute showNav d-none p-4 rounded-bottom" (mouseleave)="hideFinanceNav()">
+          <div class="row">
+            <div class="col-md-3">
+              <img [src]="financeNews[0]?.urlToImage" class="w-100" alt="financeNews">
+              <p class="monter">{{financeNews[0]?.title}}</p>
+            </div>
+            <div class="col-md-3">
+              <img [src]="financeNews[1]?.urlToImage" class="w-100" alt="financeNews">
+              <p class="monter">{{financeNews[1]?.title}}</p>
+            </div>
+            <div class="col-md-3">
+              <img [src]="financeNews[2]?.urlToImage" class="w-100" alt="financeNews">
+              <p class="monter">{{financeNews[2]?.title}}</p>
+            </div>
+            <div class="col-md-3">
+              <img [src]="financeNews[3]?.urlToImage" class="w-100" alt="financeNews">
+              <p class="monter">{{financeNews[3]?.title}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-dark position-absolute showEnterNav d-none p-4 rounded-bottom" (mouseleave)="hideEntertainmentNav()">
+          <div class="row">
+            <div class="col-md-3">
+              <img [src]="entertainmentNews[0]?.urlToImage" class="w-100" alt="entertainmentNews">
+              <p class="monter">{{entertainmentNews[0]?.title}}</p>
+            </div>
+            <div class="col-md-3">
+              <img [src]="entertainmentNews[1]?.urlToImage" class="w-100" alt="entertainmentNews">
+              <p class="monter">{{entertainmentNews[1]?.title}}</p>
+            </div>
+            <div class="col-md-3">
+              <img [src]="entertainmentNews[2]?.urlToImage" class="w-100" alt="entertainmentNews">
+              <p class="monter">{{entertainmentNews[2]?.title}}</p>
+            </div>
+            <div class="col-md-3">
+              <img [src]="entertainmentNews[3]?.urlToImage" class="w-100" alt="entertainmentNews">
+              <p class="monter">{{entertainmentNews[3]?.title}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
